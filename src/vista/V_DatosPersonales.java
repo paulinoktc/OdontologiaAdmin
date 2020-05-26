@@ -278,7 +278,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jd_fechcaNacimiento.setDateFormatString("yyyy-MM-d");
         jp_datosPersonales.add(jd_fechcaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 150, -1));
 
-        getContentPane().add(jp_datosPersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 350));
+        getContentPane().add(jp_datosPersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
 
         jl_antecedentes.setBackground(new java.awt.Color(94, 117, 116));
         jl_antecedentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -539,7 +539,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
 
         jp_odontograma.setBackground(new java.awt.Color(94, 117, 116));
         jp_odontograma.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jp_odontograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 610, 300));
+        getContentPane().add(jp_odontograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 610, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -623,7 +623,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
     public com.toedter.calendar.JDateChooser jd_fechcaNacimiento;
     private javax.swing.JLabel jl_Encia;
     private javax.swing.JLabel jl_Paladar;
-    private javax.swing.JPanel jl_antecedentes;
+    public javax.swing.JPanel jl_antecedentes;
     private javax.swing.JLabel jl_domicilio;
     private javax.swing.JLabel jl_labios;
     private javax.swing.JLabel jl_lengua;

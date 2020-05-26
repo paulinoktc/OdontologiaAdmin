@@ -227,7 +227,7 @@ public class CTRL_DatosPersonales {
         antecedPaciente.setId_antecedente(mdl_antecedente.getIdAntecedente(antecedPaciente));
         EstraerTejidosBlandos();
         antecedPaciente.setId_consulta(mdl_antecedente.getIdConsulta(String.valueOf(v_datosPersonales.jcb_t_consulta.getSelectedItem())));
-        System.out.println(antecedPaciente.getId_antecedente());
+        //System.out.println(antecedPaciente.getId_antecedente());
         mdl_antecedente.saveTipoConsulta(antecedPaciente);
         mdl_tejidos.GuardarTejidosDB(tegidosBlandos);
         EstraerPadecimientos();

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import java.sql.CallableStatement;
@@ -14,10 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author zomby
- */
 public class MODL_Paciente {
 
     private String buscaXnombre = "select  paciente.id_paciente, paciente.nombre,paciente.ap_apellido,paciente.am_apellido,paciente.sexo,paciente.fecha_nacimiento,paciente.estadoCivil,paciente.ocupacion,paciente.escolaridad,telefono.num_tel "
@@ -184,7 +176,7 @@ public class MODL_Paciente {
 
             PreparedStatement ps = cc.prepareStatement(scr_allPaciente + folio_paciente + "';");
             ResultSet rs = ps.executeQuery();
-
+            paciente.setId_paciente(folio_paciente);
             while (rs.next()) {
                 paciente.setNombre(rs.getString(2));
                 paciente.setAp_paterno(rs.getString(3));
@@ -206,6 +198,13 @@ public class MODL_Paciente {
 
             rs.next();
             paciente.setCorreo(rs.getString(1));
+            
+            
+             ps = cc.prepareStatement(scr_domicilio + folio_paciente + "';");
+            rs = ps.executeQuery();
+
+            rs.next();
+            paciente.setDomicilio(rs.getString(1));
             
             
             ps = cc.prepareStatement(scr_tutor + folio_paciente + "';");

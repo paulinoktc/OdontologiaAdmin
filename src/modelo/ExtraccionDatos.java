@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import java.util.ArrayList;
@@ -12,10 +8,7 @@ import javax.swing.JTextField;
 import vista.V_DatosPersonales;
 import vista.V_Presupuesto;
 
-/**
- *
- * @author ZOMBY
- */
+
 public class ExtraccionDatos {
 
     //V_Presupuesto v_presupuesto;

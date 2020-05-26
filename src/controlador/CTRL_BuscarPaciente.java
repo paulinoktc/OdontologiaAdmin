@@ -16,6 +16,7 @@ import modelo.MODL_Paciente;
 import modelo.MODL_Ventas;
 import modelo.OBJ_Paciente;
 import modelo.OBJ_Reglones;
+import modelo.Validador;
 import vista.V_BuscarPaciente;
 import vista.V_Cobrar;
 import vista.V_RegistrarCita;
@@ -50,6 +51,20 @@ public class CTRL_BuscarPaciente {
                 v_buscarPaciente.dispose();
 
                 new CTRL_principal();
+            }
+        });
+
+        v_buscarPaciente.jb_nuevoHistorial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (v_buscarPaciente.jcb_select_paciente.getItemCount() > 0) {
+                    String id = listaPacientes.get(v_buscarPaciente.jcb_select_paciente.getSelectedIndex()).getId_paciente();
+                    new CTRL_NuevoHistorial(id);
+                    v_buscarPaciente.dispose();
+                } else {
+                    JOptionPane.showInputDialog("Busca un paciente");
+                }
+
             }
         });
 

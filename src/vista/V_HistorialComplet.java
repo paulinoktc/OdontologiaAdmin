@@ -18,6 +18,7 @@ public class V_HistorialComplet extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
        // this.jta_AllData.setEditable(false);
+        setDefaultCloseOperation(WIDTH);
     }
 
     /**

@@ -47,6 +47,8 @@ public class V_BuscarPaciente extends javax.swing.JFrame {
         jb_salir = new javax.swing.JButton();
         jb_credito = new javax.swing.JButton();
         jl_otorgaCredito = new javax.swing.JLabel();
+        jb_nuevoHistorial = new javax.swing.JButton();
+        jl_nuevoHistorial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -152,7 +154,15 @@ public class V_BuscarPaciente extends javax.swing.JFrame {
         jl_otorgaCredito.setText("Otorgar  credito");
         jPanel1.add(jl_otorgaCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, -1, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 490));
+        jb_nuevoHistorial.setText("nuevo Historial");
+        jPanel1.add(jb_nuevoHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 80, 80));
+
+        jl_nuevoHistorial.setFont(new java.awt.Font("Courier Pitch", 1, 13)); // NOI18N
+        jl_nuevoHistorial.setForeground(new java.awt.Color(254, 254, 254));
+        jl_nuevoHistorial.setText("Nuevo Historial");
+        jPanel1.add(jl_nuevoHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,11 +215,13 @@ public class V_BuscarPaciente extends javax.swing.JFrame {
     public javax.swing.JButton jb_buscar;
     public javax.swing.JButton jb_credito;
     public javax.swing.JButton jb_hist_complet;
+    public javax.swing.JButton jb_nuevoHistorial;
     public javax.swing.JButton jb_salir;
     public javax.swing.JComboBox<String> jcb_buscar_por;
     public javax.swing.JComboBox<String> jcb_select_paciente;
     public javax.swing.JLabel jl_abonar;
     public javax.swing.JLabel jl_cuenta_credito;
+    public javax.swing.JLabel jl_nuevoHistorial;
     public javax.swing.JLabel jl_otorgaCredito;
     public javax.swing.JTextField jtf_dato_a_buscar;
     // End of variables declaration//GEN-END:variables

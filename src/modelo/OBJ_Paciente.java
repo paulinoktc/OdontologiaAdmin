@@ -150,7 +150,7 @@ public class OBJ_Paciente {
     }
 
     public String creatIDPaciente(String iniciales) {
-        String nuevoId = "";//iniciales;
+        String nuevoId = "";
         LocalDateTime datetime = LocalDateTime.now();
         DateTimeFormatter ldt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         nuevoId += datetime.format(ldt);
