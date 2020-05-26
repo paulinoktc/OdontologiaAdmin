@@ -5,11 +5,12 @@
  */
 package controlador;
 
+import modelo.ExtraccionDatos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
-import mdoelo.MatrizCostos;
+import modelo.MatrizCostos;
 import vista.V_Presupuesto;
 
 /**
@@ -58,7 +59,8 @@ public class CTRL_Presupuesto {
         v_presupuesto.jb_cobrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CTRL_Cobrar();
+                String[]concepto={"Consulta"};
+                new CTRL_Cobrar(concepto,"Al mostrador").botonComartidoCobrar();
                 v_presupuesto.dispose();
             }
         });

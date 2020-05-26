@@ -5,11 +5,26 @@
  */
 package vista;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author ZOMBY
  */
 public class V_DatosPersonales extends javax.swing.JFrame {
+
+    Graphics2D jPanelGraphics;
+    BufferedImage buffer;
+
+    public void setPanel(Graphics2D jPanelGraphics) {
+        this.jPanelGraphics = jPanelGraphics;
+    }
+
+    public void setBuffer(BufferedImage buffer) {
+        this.buffer = buffer;
+    }
 
     /**
      * Creates new form V_DatosPersonales
@@ -17,7 +32,13 @@ public class V_DatosPersonales extends javax.swing.JFrame {
     public V_DatosPersonales() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        jPanelGraphics.drawImage(buffer, 0, 0, null);
     }
 
     /**
@@ -51,9 +72,6 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jcb_estadoCivil = new javax.swing.JComboBox<>();
         jcb_escolaridad = new javax.swing.JComboBox<>();
-        jcb_dia = new javax.swing.JComboBox<>();
-        jcb_mes = new javax.swing.JComboBox<>();
-        jcb_age = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jt_motiv_visita = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -64,6 +82,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jl_domicilio = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_tratamiento = new javax.swing.JTextArea();
+        jd_fechcaNacimiento = new com.toedter.calendar.JDateChooser();
         jl_antecedentes = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jrb_apRespiratorio = new javax.swing.JRadioButton();
@@ -79,7 +98,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jrb_hipertencion = new javax.swing.JRadioButton();
         jrb_embarazada = new javax.swing.JRadioButton();
         jcb_mesesEmbarazo = new javax.swing.JComboBox<>();
-        jcb_fuma = new javax.swing.JRadioButton();
+        jrb_fuma = new javax.swing.JRadioButton();
         jrb_alcohol = new javax.swing.JRadioButton();
         jrb_drogas = new javax.swing.JRadioButton();
         jrb_alergias = new javax.swing.JRadioButton();
@@ -87,6 +106,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jrb_anti = new javax.swing.JRadioButton();
         jtf_anti = new javax.swing.JTextField();
         jcb_higieneBucal = new javax.swing.JComboBox<>();
+        jb_addAlegia = new javax.swing.JButton();
         jp_habitos = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jrb_brincomania = new javax.swing.JRadioButton();
@@ -122,7 +142,6 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jta_observaciones = new javax.swing.JTextArea();
         jp_odontograma = new javax.swing.JPanel();
-        jl_paradontograma = new javax.swing.JLabel();
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
@@ -214,15 +233,6 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jcb_escolaridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESCOLARIDAD", "PREESCOLAR", "PRIMARIA", "SECUNDARIA", "BACHILLERATO", "MEDIA SUPERIOR", "CARRERA", " " }));
         jp_datosPersonales.add(jcb_escolaridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
-        jcb_dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jp_datosPersonales.add(jcb_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
-
-        jcb_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        jp_datosPersonales.add(jcb_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
-
-        jcb_age.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2020", "2021", "2022", "2023", "2024" }));
-        jp_datosPersonales.add(jcb_age, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
         jLabel14.setBackground(new java.awt.Color(204, 204, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,7 +275,10 @@ public class V_DatosPersonales extends javax.swing.JFrame {
 
         jp_datosPersonales.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 250, -1));
 
-        getContentPane().add(jp_datosPersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 350));
+        jd_fechcaNacimiento.setDateFormatString("yyyy-MM-d");
+        jp_datosPersonales.add(jd_fechcaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 150, -1));
+
+        getContentPane().add(jp_datosPersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
 
         jl_antecedentes.setBackground(new java.awt.Color(94, 117, 116));
         jl_antecedentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -283,7 +296,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
 
         jrb_aparatoCardio.setBackground(new java.awt.Color(94, 117, 116));
         jrb_aparatoCardio.setForeground(new java.awt.Color(255, 255, 255));
-        jrb_aparatoCardio.setText("Aparato Cardiovascular");
+        jrb_aparatoCardio.setText("Aparato Cardiobascular");
         jl_antecedentes.add(jrb_aparatoCardio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jrb_apDigestivo.setBackground(new java.awt.Color(94, 117, 116));
@@ -298,7 +311,11 @@ public class V_DatosPersonales extends javax.swing.JFrame {
 
         jrb_probGoaulacion.setBackground(new java.awt.Color(94, 117, 116));
         jrb_probGoaulacion.setForeground(new java.awt.Color(255, 255, 255));
+<<<<<<< HEAD
         jrb_probGoaulacion.setText("Probelmas de Goagualacion");
+=======
+        jrb_probGoaulacion.setText("Problemas de Coagulacion");
+>>>>>>> objetos
         jl_antecedentes.add(jrb_probGoaulacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jrb_desmayos.setBackground(new java.awt.Color(94, 117, 116));
@@ -334,15 +351,15 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jrb_embarazada.setBackground(new java.awt.Color(94, 117, 116));
         jrb_embarazada.setForeground(new java.awt.Color(255, 255, 255));
         jrb_embarazada.setText("Ebarazada");
-        jl_antecedentes.add(jrb_embarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        jl_antecedentes.add(jrb_embarazada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, -1));
 
         jcb_mesesEmbarazo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meses", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-        jl_antecedentes.add(jcb_mesesEmbarazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+        jl_antecedentes.add(jcb_mesesEmbarazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, -1, -1));
 
-        jcb_fuma.setBackground(new java.awt.Color(94, 117, 116));
-        jcb_fuma.setForeground(new java.awt.Color(255, 255, 255));
-        jcb_fuma.setText("Fuma");
-        jl_antecedentes.add(jcb_fuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        jrb_fuma.setBackground(new java.awt.Color(94, 117, 116));
+        jrb_fuma.setForeground(new java.awt.Color(255, 255, 255));
+        jrb_fuma.setText("Fuma");
+        jl_antecedentes.add(jrb_fuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
         jrb_alcohol.setBackground(new java.awt.Color(94, 117, 116));
         jrb_alcohol.setForeground(new java.awt.Color(255, 255, 255));
@@ -360,18 +377,26 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jrb_alergias.setForeground(new java.awt.Color(255, 255, 255));
         jrb_alergias.setText("Alergias");
         jl_antecedentes.add(jrb_alergias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
-        jl_antecedentes.add(jtf_alergias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 140, 20));
+        jl_antecedentes.add(jtf_alergias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 140, 20));
 
         jrb_anti.setBackground(new java.awt.Color(94, 117, 116));
         jrb_anti.setForeground(new java.awt.Color(255, 255, 255));
         jrb_anti.setText("Anticonceptivo");
-        jl_antecedentes.add(jrb_anti, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
-        jl_antecedentes.add(jtf_anti, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 140, -1));
+        jl_antecedentes.add(jrb_anti, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        jl_antecedentes.add(jtf_anti, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 140, -1));
 
         jcb_higieneBucal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Higiene Bucal", "Buena", "Mala" }));
-        jl_antecedentes.add(jcb_higieneBucal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+        jl_antecedentes.add(jcb_higieneBucal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, -1, -1));
 
-        getContentPane().add(jl_antecedentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 300, 660));
+        jb_addAlegia.setText("+");
+        jb_addAlegia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_addAlegiaActionPerformed(evt);
+            }
+        });
+        jl_antecedentes.add(jb_addAlegia, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, -1, -1));
+
+        getContentPane().add(jl_antecedentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 280, 650));
 
         jp_habitos.setBackground(new java.awt.Color(94, 117, 116));
         jp_habitos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -423,8 +448,8 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jrb_hospializado.setForeground(new java.awt.Color(255, 255, 255));
         jrb_hospializado.setText("Ha Sido Hospitalizado");
         jp_habitos.add(jrb_hospializado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
-        jp_habitos.add(jtf_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, -1));
-        jp_habitos.add(jtf_hospitalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 160, -1));
+        jp_habitos.add(jtf_medicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 170, -1));
+        jp_habitos.add(jtf_hospitalizado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 170, -1));
 
         jb_add.setText("Guardar");
         jp_habitos.add(jb_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 360, -1));
@@ -445,7 +470,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jp_habitos.add(jrb_carrillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
 
         jb_more_medic.setText("+");
-        jp_habitos.add(jb_more_medic, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        jp_habitos.add(jb_more_medic, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
 
         jb_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancelar_40_40.png"))); // NOI18N
         jb_salir.setBorder(null);
@@ -453,7 +478,7 @@ public class V_DatosPersonales extends javax.swing.JFrame {
         jb_salir.setContentAreaFilled(false);
         jb_salir.setFocusPainted(false);
         jb_salir.setFocusable(false);
-        jp_habitos.add(jb_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 40, 40));
+        jp_habitos.add(jb_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 40, 40));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,25 +539,20 @@ public class V_DatosPersonales extends javax.swing.JFrame {
 
         jp_habitos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 340, -1));
 
-        getContentPane().add(jp_habitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, 660));
+        getContentPane().add(jp_habitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 420, 660));
 
         jp_odontograma.setBackground(new java.awt.Color(94, 117, 116));
         jp_odontograma.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jl_paradontograma.setBackground(new java.awt.Color(204, 204, 255));
-        jl_paradontograma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/odonto.png"))); // NOI18N
-        jl_paradontograma.setFocusable(false);
-        jl_paradontograma.setRequestFocusEnabled(false);
-        jp_odontograma.add(jl_paradontograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 560, 280));
-
-        getContentPane().add(jp_odontograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 610, 300));
+        getContentPane().add(jp_odontograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 610, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcb_alimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_alimentacionActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jcb_alimentacionActionPerformed
+
+    private void jb_addAlegiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addAlegiaActionPerformed
+    }//GEN-LAST:event_jb_addAlegiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -592,33 +612,34 @@ public class V_DatosPersonales extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     public javax.swing.JButton jb_add;
+    public javax.swing.JButton jb_addAlegia;
     public javax.swing.JButton jb_mas;
     public javax.swing.JButton jb_more_medic;
     public javax.swing.JButton jb_salir;
-    public javax.swing.JComboBox<String> jcb_age;
     public javax.swing.JComboBox<String> jcb_alimentacion;
-    public javax.swing.JComboBox<String> jcb_dia;
     public javax.swing.JComboBox<String> jcb_escolaridad;
     public javax.swing.JComboBox<String> jcb_estadoCivil;
     public javax.swing.JComboBox<String> jcb_frenillo;
+<<<<<<< HEAD
     private javax.swing.JRadioButton jcb_fuma;
+=======
+>>>>>>> objetos
     public javax.swing.JComboBox<String> jcb_higieneBucal;
-    public javax.swing.JComboBox<String> jcb_mes;
     public javax.swing.JComboBox<String> jcb_mesesEmbarazo;
     public javax.swing.JComboBox<String> jcb_sexo;
     public javax.swing.JComboBox<String> jcb_t_consulta;
+    public com.toedter.calendar.JDateChooser jd_fechcaNacimiento;
     private javax.swing.JLabel jl_Encia;
     private javax.swing.JLabel jl_Paladar;
-    private javax.swing.JPanel jl_antecedentes;
+    public javax.swing.JPanel jl_antecedentes;
     private javax.swing.JLabel jl_domicilio;
     private javax.swing.JLabel jl_labios;
     private javax.swing.JLabel jl_lengua;
     private javax.swing.JLabel jl_mejilla;
-    public javax.swing.JLabel jl_paradontograma;
     private javax.swing.JPanel jp_datosPersonales;
     private javax.swing.JPanel jp_habitos;
-    private javax.swing.JPanel jp_odontograma;
-    private javax.swing.JRadioButton jrb_alcohol;
+    public javax.swing.JPanel jp_odontograma;
+    public javax.swing.JRadioButton jrb_alcohol;
     public javax.swing.JRadioButton jrb_alergias;
     public javax.swing.JRadioButton jrb_anti;
     public javax.swing.JRadioButton jrb_apDigestivo;
@@ -629,10 +650,18 @@ public class V_DatosPersonales extends javax.swing.JFrame {
     public javax.swing.JRadioButton jrb_contracciones;
     public javax.swing.JRadioButton jrb_desmayos;
     public javax.swing.JRadioButton jrb_diabetes;
+<<<<<<< HEAD
     private javax.swing.JRadioButton jrb_drogas;
     public javax.swing.JRadioButton jrb_embarazada;
     public javax.swing.JRadioButton jrb_encia;
     public javax.swing.JRadioButton jrb_fiebreReumatica;
+=======
+    public javax.swing.JRadioButton jrb_drogas;
+    public javax.swing.JRadioButton jrb_embarazada;
+    public javax.swing.JRadioButton jrb_encia;
+    public javax.swing.JRadioButton jrb_fiebreReumatica;
+    public javax.swing.JRadioButton jrb_fuma;
+>>>>>>> objetos
     public javax.swing.JRadioButton jrb_habitMoridida;
     public javax.swing.JRadioButton jrb_hipertencion;
     public javax.swing.JRadioButton jrb_hospializado;
